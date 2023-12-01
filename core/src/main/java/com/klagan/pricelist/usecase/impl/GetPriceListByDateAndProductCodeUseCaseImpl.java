@@ -2,7 +2,7 @@ package com.klagan.pricelist.usecase.impl;
 
 import com.klagan.pricelist.entity.PriceListCore;
 import com.klagan.pricelist.ports.gateway.PriceListGateway;
-import com.klagan.pricelist.usecase.api.GetPriceListUseCaseByDateAndProductCode;
+import com.klagan.pricelist.usecase.api.GetPriceListByDateAndProductCodeUseCase;
 import com.klagan.product.exception.ProductException;
 
 import java.time.LocalDate;
@@ -12,13 +12,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class GetPriceListUseCaseByDateAndProductCodeImpl implements GetPriceListUseCaseByDateAndProductCode {
+public class GetPriceListByDateAndProductCodeUseCaseImpl implements GetPriceListByDateAndProductCodeUseCase {
 
-    private static final Logger logger = Logger.getLogger(GetPriceListUseCaseByDateAndProductCodeImpl.class.getName());
+    private static final Logger logger = Logger.getLogger(GetPriceListByDateAndProductCodeUseCaseImpl.class.getName());
 
     private final PriceListGateway priceListGateway;
 
-    public GetPriceListUseCaseByDateAndProductCodeImpl(PriceListGateway priceListGateway) {
+    public GetPriceListByDateAndProductCodeUseCaseImpl(PriceListGateway priceListGateway) {
         this.priceListGateway = priceListGateway;
     }
 

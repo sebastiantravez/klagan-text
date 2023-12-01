@@ -4,7 +4,6 @@ import com.klagan.product.entity.ProductCore;
 import com.klagan.product.usecase.api.CreateProductUseCase;
 import com.klagan.text.dto.ProductDto;
 import com.klagan.text.util.GlobalMapper;
-import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

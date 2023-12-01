@@ -19,3 +19,5 @@ La de lista de precios se carga con varios registros para validar los precios de
 Para probar los endpoint en la carpeta /postman se encuentra el collection de los endpoints para porbarlos se debe importar el archivo itext-app.postman_collection.json se lo debe hacer con postman.
 
 Para ingresar a la consola de h2: http://localhost:8080/api/h2-console Datos para configurar conexión a la base de datos: Driver Class: org.h2.Driver JDBC URL: jdbc:h2:mem:nisum username: admin / password: admin
+
+El servicio cuenta con 2 pruebas unitarias con Mockito en core e infrastructure

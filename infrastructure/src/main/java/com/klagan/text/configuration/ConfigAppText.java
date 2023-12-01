@@ -1,8 +1,8 @@
 package com.klagan.text.configuration;
 
 import com.klagan.pricelist.ports.gateway.PriceListGateway;
-import com.klagan.pricelist.usecase.api.GetPriceListUseCaseByDateAndProductCode;
-import com.klagan.pricelist.usecase.impl.GetPriceListUseCaseByDateAndProductCodeImpl;
+import com.klagan.pricelist.usecase.api.GetPriceListByDateAndProductCodeUseCase;
+import com.klagan.pricelist.usecase.impl.GetPriceListByDateAndProductCodeUseCaseImpl;
 import com.klagan.product.ports.gateway.ProductGateway;
 import com.klagan.product.usecase.api.CreateProductUseCase;
 import com.klagan.product.usecase.impl.CreateProductUseCaseImpl;
@@ -31,7 +31,7 @@ public class ConfigAppText {
     }
 
     @Bean
-    public GetPriceListUseCaseByDateAndProductCode getPriceListUseCaseByDateAndProductCode(PriceListGateway priceListGateway) {
-        return new GetPriceListUseCaseByDateAndProductCodeImpl(priceListGateway);
+    public GetPriceListByDateAndProductCodeUseCase getPriceListUseCaseByDateAndProductCode(PriceListGateway priceListGateway) {
+        return new GetPriceListByDateAndProductCodeUseCaseImpl(priceListGateway);
     }
 }
