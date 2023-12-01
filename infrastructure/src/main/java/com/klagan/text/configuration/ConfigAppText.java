@@ -11,8 +11,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.text.SimpleDateFormat;
-
 @Configuration
 public class ConfigAppText {
 
@@ -25,11 +23,6 @@ public class ConfigAppText {
     public GlobalMapper globalMapper() {
         GlobalMapper globalMapper = new GlobalMapper();
         return globalMapper;
-    }
-
-    @Bean
-    public SimpleDateFormat simpleDateFormat() {
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm");
     }
 
     @Bean
