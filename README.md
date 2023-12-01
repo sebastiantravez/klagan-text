@@ -14,7 +14,7 @@ El contextPath de la app esta configurado con el valor /api.
 
 La tabla productos se carga con 1 solo registro al iniciar la aplicacion
 
-La de lista de precios se carga con varios registros para validar los precios de los productos por fecha y prioridad segun orden descrito en el ejercicio
+La tabla lista de precios se carga con varios registros para validar los precios de los productos por fecha y prioridad segun orden descrito en el ejercicio
 
 Para probar los endpoint en la carpeta /postman se encuentra el collection de los endpoints para porbarlos se debe importar el archivo itext-app.postman_collection.json se lo debe hacer con postman.
 
