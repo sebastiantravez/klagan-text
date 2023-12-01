@@ -3,15 +3,18 @@ package com.klagan.pricelist.usecase.impl;
 import com.klagan.pricelist.entity.PriceListCore;
 import com.klagan.pricelist.ports.gateway.PriceListGateway;
 import com.klagan.pricelist.usecase.api.GetPriceListUseCaseByDateAndProductCode;
+import com.klagan.product.exception.ProductException;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class GetPriceListUseCaseByDateAndProductCodeImpl implements GetPriceListUseCaseByDateAndProductCode {
+
+    private static final Logger logger = Logger.getLogger(GetPriceListUseCaseByDateAndProductCodeImpl.class.getName());
 
     private final PriceListGateway priceListGateway;
 
@@ -20,13 +23,19 @@ public class GetPriceListUseCaseByDateAndProductCodeImpl implements GetPriceList
     }
 
     @Override
-    public List<PriceListCore> execute(String date, String productCode) throws ParseException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate = LocalDate.parse(date, formatter);
-        LocalDateTime localDateTime = localDate.atStartOfDay();
-        LocalTime now = LocalTime.now();
-        LocalDateTime dateFinal = localDateTime.withHour(now.getHour()).withMinute(now.getMinute());
-        return priceListGateway.getPriceListByDatesAndProduct(dateFinal, productCode);
+    public List<PriceListCore> execute(String date, String productCode) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate localDate = LocalDate.parse(date, formatter);
+            LocalDateTime localDateTime = localDate.atStartOfDay();
+            LocalTime now = LocalTime.now();
+            LocalDateTime dateFinal = localDateTime.withHour(now.getHour()).withMinute(now.getMinute());
+            return priceListGateway.getPriceListByDatesAndProduct(dateFinal, productCode);
+        } catch (Exception e) {
+            String message = "Error getting product prices list for product code:" + productCode;
+            logger.info(message);
+            throw new ProductException(message);
+        }
     }
 
 }

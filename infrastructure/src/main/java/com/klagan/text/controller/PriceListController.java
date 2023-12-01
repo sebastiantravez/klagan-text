@@ -25,7 +25,7 @@ public class PriceListController {
     private final GlobalMapper globalMapper;
 
     @GetMapping("/get-prices")
-    public ResponseEntity<List<PriceListDto>> getPricesByDates(@RequestParam("date") String date, @RequestParam("code") String code) throws ParseException {
+    public ResponseEntity<List<PriceListDto>> getPricesByDate(@RequestParam("date") String date, @RequestParam("code") String code) throws ParseException {
         List<PriceListCore> priceListCores = getPriceListUseCaseByDateAndProductCode.execute(date, code);
         return new ResponseEntity<>(globalMapper.priceListDtoFromCoreEntities(priceListCores), HttpStatus.OK);
     }
