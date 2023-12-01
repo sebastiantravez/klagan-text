@@ -1,6 +1,7 @@
 package com.klagan.text.util;
 
 import com.klagan.pricelist.entity.PriceListCore;
+import com.klagan.product.entity.ProductCore;
 import com.klagan.text.dto.PriceListDto;
 import com.klagan.text.dto.ProductDto;
 import org.modelmapper.ModelMapper;
@@ -22,5 +23,13 @@ public class GlobalMapper {
 
     public List<PriceListDto> priceListDtoFromCoreEntities(List<PriceListCore> priceListCores) {
         return priceListCores.stream().map(this::priceListDtoFromCoreEntity).collect(Collectors.toList());
+    }
+
+    public ProductCore productCoretoCoreEntity(ProductDto productDto) {
+        return modelMapper.map(productDto, ProductCore.class);
+    }
+
+    public ProductDto productDtoFromCoreEntity(ProductCore productCore) {
+        return modelMapper.map(productCore, ProductDto.class);
     }
 }
