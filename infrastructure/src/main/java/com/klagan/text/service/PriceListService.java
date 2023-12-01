@@ -10,9 +10,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,19 +24,6 @@ public class PriceListService implements PriceListGateway {
     @Override
     public List<PriceListCore> getPriceListByDatesAndProduct(LocalDateTime date, String productCode) {
         List<PriceList> priceLists = priceListRepository.findByDatesAndProductCode(date, productCode);
-
-        //TODO ordena descendentemente por fechas
-        Comparator<PriceList> comparatorDate = Comparator
-                .comparing(PriceList::getStartDate)
-                .thenComparing(PriceList::getEndDate).reversed();
-
-        //TODO ordena descendentemente, tomando como prioridad el 1
-        Comparator<PriceList> comparatorPriority = Comparator
-                .comparing(PriceList::getPriority, Comparator.reverseOrder());
-
-        Collections.sort(priceLists, comparatorDate);
-        Collections.sort(priceLists, comparatorPriority);
-
         return priceLists.stream().map(this::buildPriceList).collect(Collectors.toList());
     }
 
