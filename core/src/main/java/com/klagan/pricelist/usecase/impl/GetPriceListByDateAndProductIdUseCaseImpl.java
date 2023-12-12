@@ -28,12 +28,9 @@ public class GetPriceListByDateAndProductIdUseCaseImpl implements GetPriceListBy
     @Override
     public List<PriceListCore> execute(String date, Long productId, Long brandId) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate localDate = LocalDate.parse(date, formatter);
-            LocalDateTime localDateTime = localDate.atStartOfDay();
-            LocalTime now = LocalTime.now();
-            LocalDateTime dateFinal = localDateTime.withHour(now.getHour()).withMinute(now.getMinute());
-            List<PriceListCore> priceLists = priceListGateway.getPriceListByDatesAndProduct(dateFinal, productId);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime localDateTime = LocalDateTime.parse(date, formatter);
+            List<PriceListCore> priceLists = priceListGateway.getPriceListByDatesAndProduct(localDateTime, productId);
 
             //TODO ordena descendentemente por fechas
             Comparator<PriceListCore> comparatorDate = Comparator
