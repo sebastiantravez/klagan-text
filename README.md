@@ -25,9 +25,9 @@ El servicio cuenta con 2 pruebas unitarias con Mockito en core e infrastructure
 Se agrega nueva entidad BRAND para manejar la marca del producto asociada a la lista de precios y se crean 3 registros de esta
 siendo 
 
-1 -> ZARA
+1 -> XYZ
 
-2 -> BERSHKA
+2 -> ZARA
 
 3 -> PULL&BEAR
 
