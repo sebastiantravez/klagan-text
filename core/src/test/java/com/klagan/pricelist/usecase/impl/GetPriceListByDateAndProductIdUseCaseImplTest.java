@@ -17,7 +17,6 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -36,7 +35,7 @@ class GetPriceListByDateAndProductIdUseCaseImplTest {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String date = now.format(formatter);
         when(priceListGateway.getPriceListByDatesAndProduct(any(), anyLong())).thenReturn(Arrays.asList());
-        List<PriceListCore> response = getPriceListByDateAndProductCodeUseCase.execute(date, 2342343L);
+        List<PriceListCore> response = getPriceListByDateAndProductCodeUseCase.execute(date, 2342343L, 1L);
         Assertions.assertTrue(response.isEmpty());
         verify(priceListGateway).getPriceListByDatesAndProduct(any(), anyLong());
     }
