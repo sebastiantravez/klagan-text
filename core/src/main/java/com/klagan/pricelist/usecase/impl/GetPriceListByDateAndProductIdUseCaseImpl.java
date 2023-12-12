@@ -47,6 +47,7 @@ public class GetPriceListByDateAndProductIdUseCaseImpl implements GetPriceListBy
             Collections.sort(priceLists, comparatorDate);
             Collections.sort(priceLists, comparatorPriority);
 
+            // TODO filtra lista de precios por marca (brandId)
             return priceLists.stream().filter(product -> product.getBrandCore().getBrandId().equals(brandId)).collect(Collectors.toList());
         } catch (Exception e) {
             String message = "Error getting product prices list for product code:" + productId;
