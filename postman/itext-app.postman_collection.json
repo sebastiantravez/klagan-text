@@ -8,6 +8,55 @@
 	},
 	"item": [
 		{
+			"name": "get price list",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const moment = require('moment');",
+							"let formattedDate = moment().format('YYYY-MM-DD HH:mm:ss');",
+							"pm.variables.set('systemTime', formattedDate);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/price-list/get-prices?date={{systemTime}}&productId=10&brandId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"price-list",
+						"get-prices"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "{{systemTime}}"
+						},
+						{
+							"key": "productId",
+							"value": "10"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "create product",
 			"request": {
 				"method": "POST",
@@ -32,53 +81,6 @@
 						"api",
 						"product",
 						"create-product"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get price list",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"pm.variables.set(\"systemTime\", new Date().toISOString().slice(0,10));",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/price-list/get-prices?date={{systemTime}}&productId=10&brandId=2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"price-list",
-						"get-prices"
-					],
-					"query": [
-						{
-							"key": "date",
-							"value": "{{systemTime}}"
-						},
-						{
-							"key": "productId",
-							"value": "10"
-						},
-						{
-							"key": "brandId",
-							"value": "2"
-						}
 					]
 				}
 			},
