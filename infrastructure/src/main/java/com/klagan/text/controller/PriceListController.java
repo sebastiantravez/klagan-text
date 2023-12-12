@@ -1,7 +1,7 @@
 package com.klagan.text.controller;
 
 import com.klagan.pricelist.entity.PriceListCore;
-import com.klagan.pricelist.usecase.api.GetPriceListByDateAndProductCodeUseCase;
+import com.klagan.pricelist.usecase.api.GetPriceListByDateAndProductIdUseCase;
 import com.klagan.text.dto.PriceListDto;
 import com.klagan.text.util.GlobalMapper;
 import lombok.RequiredArgsConstructor;
@@ -20,13 +20,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PriceListController {
 
-    private final GetPriceListByDateAndProductCodeUseCase getPriceListByDateAndProductCodeUseCase;
+    private final GetPriceListByDateAndProductIdUseCase getPriceListByDateAndProductIdUseCase;
 
     private final GlobalMapper globalMapper;
 
     @GetMapping("/get-prices")
-    public ResponseEntity<List<PriceListDto>> getPricesByDate(@RequestParam("date") String date, @RequestParam("code") String code) throws ParseException {
-        List<PriceListCore> priceListCores = getPriceListByDateAndProductCodeUseCase.execute(date, code);
+    public ResponseEntity<List<PriceListDto>> getPricesByDate(@RequestParam("date") String date,
+                                                              @RequestParam("productId") Long productId,
+                                                              @RequestParam("brandId") Long brandId) throws ParseException {
+        List<PriceListCore> priceListCores = getPriceListByDateAndProductIdUseCase.execute(date, productId, brandId);
         return new ResponseEntity<>(globalMapper.priceListDtoFromCoreEntities(priceListCores), HttpStatus.OK);
     }
+
 }

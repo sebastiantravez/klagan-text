@@ -55,7 +55,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/price-list/get-prices?date={{systemTime}}&code=35455",
+					"raw": "http://localhost:8080/api/price-list/get-prices?date={{systemTime}}&productId=10&brandId=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -72,8 +72,12 @@
 							"value": "{{systemTime}}"
 						},
 						{
-							"key": "code",
-							"value": "35455"
+							"key": "productId",
+							"value": "10"
+						},
+						{
+							"key": "brandId",
+							"value": "2"
 						}
 					]
 				}

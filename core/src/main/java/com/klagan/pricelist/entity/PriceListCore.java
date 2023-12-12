@@ -13,11 +13,12 @@ public class PriceListCore {
     private Integer priority;
     private String curr;
     private ProductCore productCore;
+    private BrandCore brandCore;
 
     public PriceListCore() {
     }
 
-    public PriceListCore(Long priceListId, LocalDateTime startDate, LocalDateTime endDate, BigDecimal price, Integer priority, String curr, ProductCore productCore) {
+    public PriceListCore(Long priceListId, LocalDateTime startDate, LocalDateTime endDate, BigDecimal price, Integer priority, String curr, ProductCore productCore, BrandCore brandCore) {
         this.priceListId = priceListId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -25,6 +26,7 @@ public class PriceListCore {
         this.priority = priority;
         this.curr = curr;
         this.productCore = productCore;
+        this.brandCore = brandCore;
     }
 
     public Long getPriceListId() {
@@ -81,6 +83,14 @@ public class PriceListCore {
 
     public void setProductCore(ProductCore productCore) {
         this.productCore = productCore;
+    }
+
+    public BrandCore getBrandCore() {
+        return brandCore;
+    }
+
+    public void setBrandCore(BrandCore brandCore) {
+        this.brandCore = brandCore;
     }
 }
 

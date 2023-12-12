@@ -1,5 +1,6 @@
 package com.klagan.text.service;
 
+import com.klagan.pricelist.entity.BrandCore;
 import com.klagan.pricelist.entity.PriceListCore;
 import com.klagan.pricelist.ports.gateway.PriceListGateway;
 import com.klagan.product.entity.ProductCore;
@@ -22,14 +23,15 @@ public class PriceListService implements PriceListGateway {
     private final ModelMapper modelMapper;
 
     @Override
-    public List<PriceListCore> getPriceListByDatesAndProduct(LocalDateTime date, String productCode) {
-        List<PriceList> priceLists = priceListRepository.findByDatesAndProductCode(date, productCode);
+    public List<PriceListCore> getPriceListByDatesAndProduct(LocalDateTime date, Long productId) {
+        List<PriceList> priceLists = priceListRepository.findByDatesAndProductId(date, productId);
         return priceLists.stream().map(this::buildPriceList).collect(Collectors.toList());
     }
 
     private PriceListCore buildPriceList(PriceList priceList) {
         PriceListCore priceListCore = modelMapper.map(priceList, PriceListCore.class);
         priceListCore.setProductCore(modelMapper.map(priceList.getProduct(), ProductCore.class));
+        priceListCore.setBrandCore(modelMapper.map(priceList.getBrand(), BrandCore.class));
         return priceListCore;
     }
 }

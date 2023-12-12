@@ -21,3 +21,12 @@ Para probar los endpoint en la carpeta /postman se encuentra el collection de lo
 Para ingresar a la consola de h2: http://localhost:8080/api/h2-console Datos para configurar conexión a la base de datos: Driver Class: org.h2.Driver JDBC URL: jdbc:h2:mem:nisum username: admin / password: admin
 
 El servicio cuenta con 2 pruebas unitarias con Mockito en core e infrastructure
+
+Se agrega nueva entidad BRAND para manejar la marca del producto asociada a la lista de precios y se crean 3 registros de esta
+siendo 
+
+1 -> ZARA
+
+2 -> BERSHKA
+
+3 -> PULL&BEAR

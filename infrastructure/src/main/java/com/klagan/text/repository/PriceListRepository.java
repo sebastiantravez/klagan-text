@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface PriceListRepository extends JpaRepository<PriceList, Long> {
 
-    @Query("SELECT p FROM PriceList p INNER JOIN p.product pr WHERE :date BETWEEN p.startDate AND p.endDate AND pr.code = :productCode")
-    List<PriceList> findByDatesAndProductCode(@Param("date") LocalDateTime date, @Param("productCode") String productCode);
+    @Query("SELECT p FROM PriceList p INNER JOIN p.product pr WHERE :date BETWEEN p.startDate AND p.endDate AND pr.productId = :productId")
+    List<PriceList> findByDatesAndProductId(@Param("date") LocalDateTime date, @Param("productId") Long productId);
 
 }

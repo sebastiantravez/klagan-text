@@ -7,5 +7,5 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PriceListGateway {
-    List<PriceListCore> getPriceListByDatesAndProduct(LocalDateTime date, String productCode) throws ParseException;
+    List<PriceListCore> getPriceListByDatesAndProduct(LocalDateTime date, Long productId) throws ParseException;
 }

@@ -18,9 +18,8 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -52,15 +51,15 @@ class PriceListServiceTest {
                         .name("Product A")
                         .build())
                 .build();
-        when(priceListRepository.findByDatesAndProductCode(any(), anyString())).thenReturn(Arrays.asList(priceList));
+        when(priceListRepository.findByDatesAndProductId(any(), anyLong())).thenReturn(Arrays.asList(priceList));
         PriceListCore priceListCore = new PriceListCore();
         ProductCore productCore = new ProductCore();
         productCore.setCode("34355");
         priceListCore.setProductCore(productCore);
         when(modelMapper.map(any(), eq(PriceListCore.class))).thenReturn(priceListCore);
         when(modelMapper.map(any(), eq(ProductCore.class))).thenReturn(productCore);
-        List<PriceListCore> response = priceListService.getPriceListByDatesAndProduct(LocalDateTime.now(), "34355");
+        List<PriceListCore> response = priceListService.getPriceListByDatesAndProduct(LocalDateTime.now(), 34355L);
         Assertions.assertThat(response).isNotEmpty();
-        verify(priceListRepository).findByDatesAndProductCode(any(), any());
+        verify(priceListRepository).findByDatesAndProductId(any(), any());
     }
 }

@@ -10,24 +10,22 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class GetPriceListByDateAndProductCodeUseCaseImplTest {
+class GetPriceListByDateAndProductIdUseCaseImplTest {
 
     @InjectMocks
-    private GetPriceListByDateAndProductCodeUseCaseImpl getPriceListByDateAndProductCodeUseCase;
+    private GetPriceListByDateAndProductIdUseCaseImpl getPriceListByDateAndProductCodeUseCase;
 
     @Mock
     private PriceListGateway priceListGateway;
@@ -37,9 +35,9 @@ class GetPriceListByDateAndProductCodeUseCaseImplTest {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String date = now.format(formatter);
-        when(priceListGateway.getPriceListByDatesAndProduct(any(), anyString())).thenReturn(Arrays.asList());
-        List<PriceListCore> response = getPriceListByDateAndProductCodeUseCase.execute(date, "2342343");
+        when(priceListGateway.getPriceListByDatesAndProduct(any(), anyLong())).thenReturn(Arrays.asList());
+        List<PriceListCore> response = getPriceListByDateAndProductCodeUseCase.execute(date, 2342343L);
         Assertions.assertTrue(response.isEmpty());
-        verify(priceListGateway).getPriceListByDatesAndProduct(any(), anyString());
+        verify(priceListGateway).getPriceListByDatesAndProduct(any(), anyLong());
     }
 }

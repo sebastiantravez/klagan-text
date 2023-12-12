@@ -1,6 +1,5 @@
 package com.klagan.text.dto;
 
-import com.klagan.product.entity.ProductCore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +18,5 @@ public class PriceListDto {
     private Integer priority;
     private String curr;
     private ProductDto product;
+    private BrandDto brand;
 }
